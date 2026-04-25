@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://dr4ey43ecilnb"]
+
+[ext_resource type="PackedScene" uid="uid://bst546qp4jymr" path="res://player/player.tscn" id="1_7nsiq"]
+[ext_resource type="Script" uid="uid://bsw87ek8hrti1" path="res://minigames/MinijuegoLlaves/minigame_doors.gd" id="1_vmcbb"]
+
+[node name="Main" type="Node2D" unique_id=1625915738]
+script = ExtResource("1_vmcbb")
+turn_label_path = NodePath("CanvasLayer/BotonJuego/TurnLabel")
+result_label_path = NodePath("CanvasLayer/BotonJuego/ResultLabel")
+
+[node name="Player" parent="." unique_id=1328520016 instance=ExtResource("1_7nsiq")]
+modulate = Color(1, 0.078431375, 0.078431375, 1)
+position = Vector2(692, 925)
+
+[node name="Player2" parent="." unique_id=1628419641 instance=ExtResource("1_7nsiq")]
+modulate = Color(4.6205523e-06, 0.8113844, 0.7320933, 1)
+position = Vector2(871, 924)
+player_id = 2
+
+[node name="Player3" parent="." unique_id=1940672681 instance=ExtResource("1_7nsiq")]
+modulate = Color(0.95, 0.95, 0, 1)
+position = Vector2(1049, 923)
+player_id = 3
+
+[node name="Player4" parent="." unique_id=2144217374 instance=ExtResource("1_7nsiq")]
+modulate = Color(0.03137255, 1, 0, 1)
+position = Vector2(1231, 920)
+player_id = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=135786438]
+
+[node name="BotonJuego" type="Control" parent="CanvasLayer" unique_id=1861576075]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 3
+anchor_left = 0.079166666
+anchor_top = 0.036111113
+anchor_right = 0.92291665
+anchor_bottom = 0.7592593
+offset_left = -150.0
+offset_top = -40.0
+offset_right = 150.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ResultLabel" type="Label" parent="CanvasLayer/BotonJuego" unique_id=349665529]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.0
+offset_top = 159.5
+offset_right = 298.0
+offset_bottom = 209.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="TurnLabel" type="Label" parent="CanvasLayer/BotonJuego" unique_id=761294269]
+layout_mode = 0
+offset_left = 726.5833
+offset_top = 132.5
+offset_right = 1169.5833
+offset_bottom = 201.5
+theme_override_font_sizes/font_size = 50
+text = "Turno del jugador "
+horizontal_alignment = 1
+
+[node name="KeysContainer" type="HBoxContainer" parent="CanvasLayer/BotonJuego" unique_id=551365485]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -418.5
+offset_top = -168.33337
+offset_right = 418.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Llave 1" type="Button" parent="CanvasLayer/BotonJuego/KeysContainer" unique_id=215591543]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 35
+text = "Llave 1"
+
+[node name="Llave 2" type="Button" parent="CanvasLayer/BotonJuego/KeysContainer" unique_id=2110800416]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "Llave 2"
+
+[node name="Llave 3" type="Button" parent="CanvasLayer/BotonJuego/KeysContainer" unique_id=834837467]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "Llave 3"
+
+[node name="Llave 4" type="Button" parent="CanvasLayer/BotonJuego/KeysContainer" unique_id=1994648655]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "Llave 4"
+
+[node name="Llave 5" type="Button" parent="CanvasLayer/BotonJuego/KeysContainer" unique_id=1442474459]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "Llave 5"
+
+[node name="DoorsContainer" type="HBoxContainer" parent="CanvasLayer/BotonJuego" unique_id=1063715691]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -846.9792
+offset_top = -153.91669
+offset_right = 843.0209
+offset_bottom = 170.08331
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Puerta A" type="Button" parent="CanvasLayer/BotonJuego/DoorsContainer" unique_id=567014527]
+custom_minimum_size = Vector2(180, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+text = "Puerta A"
+
+[node name="Puerta B" type="Button" parent="CanvasLayer/BotonJuego/DoorsContainer" unique_id=775861756]
+custom_minimum_size = Vector2(180, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+text = "Puerta B"
+
+[node name="Puerta C" type="Button" parent="CanvasLayer/BotonJuego/DoorsContainer" unique_id=2040455056]
+custom_minimum_size = Vector2(180, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+text = "Puerta C"

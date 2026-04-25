@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://5ifdhbpo3mys"]
+
+[ext_resource type="Script" uid="uid://mhwmaukj4sul" path="res://results/results_screen.gd" id="1_f61vt"]
+
+[node name="Control" type="Control" unique_id=1906085517]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f61vt")
+ranking_label_path = NodePath("ranking")
+
+[node name="ranking" type="Label" parent="." unique_id=1368367020]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -951.5
+offset_top = -537.0
+offset_right = 952.0
+offset_bottom = 541.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "GOL"
+horizontal_alignment = 1
+vertical_alignment = 1

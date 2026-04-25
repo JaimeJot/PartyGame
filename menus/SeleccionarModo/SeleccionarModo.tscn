@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://642dfxo7fhfd"]
+
+[ext_resource type="Script" uid="uid://b6ob6rip85qxe" path="res://menus/SeleccionarModo/seleccionar_modo.gd" id="1_nbeof"]
+
+[node name="SeleccionarModo" type="Control" unique_id=557011006]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_nbeof")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=838661614]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -658.0
+offset_top = -154.0
+offset_right = 656.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tableros" type="Button" parent="VBoxContainer" unique_id=128253560]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Tableros"
+
+[node name="Minijuegos" type="Button" parent="VBoxContainer" unique_id=1441296172]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Minijuegos"
+
+[node name="Volver" type="Button" parent="VBoxContainer" unique_id=2086241240]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Volver"
+vertical_icon_alignment = 2
+
+[connection signal="pressed" from="VBoxContainer/Tableros" to="." method="_on_tableros_pressed"]
+[connection signal="pressed" from="VBoxContainer/Minijuegos" to="." method="_on_minijuegos_pressed"]
+[connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]
