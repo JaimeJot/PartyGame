@@ -9,11 +9,11 @@ const PLAYER_COUNT := 4
 const KEY_COUNT := 5
 const DOOR_COUNT := 3
 
-const ACTIONS := {
-	"confirm": "mando1_aceptar",
-	"cancel": "mando1_atras",
-	"left": "mando1_left",
-	"right": "mando1_right"
+var ACTIONS := {
+	0: { "confirm": "p1_accept", "cancel": "p1_cancel", "left": "p1_left", "right": "p1_right" },
+	1: { "confirm": "p2_accept", "cancel": "p2_cancel", "left": "p2_left", "right": "p2_right" },
+	2: { "confirm": "p3_accept", "cancel": "p3_cancel", "left": "p3_left", "right": "p3_right" },
+	3: { "confirm": "p4_accept", "cancel": "p4_cancel", "left": "p4_left", "right": "p4_right" }
 }
 
 var turn_label: Label
@@ -75,13 +75,17 @@ func assign_keys():
 # ---------------- INPUT ----------------
 
 func _process(_delta):
-	if Input.is_action_just_pressed(ACTIONS.confirm):
+	# 🎮 CONTROLES DEBUG (todos usan Player1)
+	if Input.is_action_just_pressed("p1_confirm"):
 		confirm()
-	if Input.is_action_just_pressed(ACTIONS.cancel):
+
+	if Input.is_action_just_pressed("p1_back"):
 		selection_mode = SelectionMode.KEY
-	if Input.is_action_just_pressed(ACTIONS.left):
+
+	if Input.is_action_just_pressed("p1_left"):
 		move(-1)
-	if Input.is_action_just_pressed(ACTIONS.right):
+
+	if Input.is_action_just_pressed("p1_right"):
 		move(1)
 
 func confirm():
@@ -123,14 +127,32 @@ func try_open(key: int, door: int):
 
 func next_turn():
 	if rankings.size() == DOOR_COUNT:
+		# Añadir el último jugador que falta
 		for p in turn_order:
 			if not rankings.has(p):
 				rankings.append(p)
-		GameState.rankings = rankings
+
+		# 🔥 CONVERTIR A FORMATO CORRECTO
+		var ordered_results = []
+		var pos = 1
+		
+		for p in rankings:
+			ordered_results.append({
+				"player": "Player" + str(p + 1),
+				"position": pos
+			})
+			pos += 1
+
+		# 💾 GUARDAR BIEN
+		GameState.rankings["doors"] = ordered_results
+		GameState.last_results = ordered_results
+
+		# 👉 IR A RESULTADOS
 		get_tree().change_scene_to_file("res://results/ResultsScreen.tscn")
 		queue_free()
 		return
 
+	# 👉 SIGUIENTE TURNO NORMAL
 	current_turn = (current_turn + 1) % turn_order.size()
 	selection_mode = SelectionMode.KEY
 	selection_index = first_valid(key_used)
@@ -141,8 +163,8 @@ func next_turn():
 # ---------------- UI ----------------
 
 func update_ui():
-	turn_label.text = "Turno del jugador %d" % (turn_order[current_turn] + 1)
-
+	var p = turn_order[current_turn] + 1
+	turn_label.text = "Turno del Jugador " + str(p)
 func update_visual():
 	clear_visuals()
 
