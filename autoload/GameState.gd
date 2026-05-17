@@ -1,7 +1,8 @@
 extends Node
 
-var rankings := {}   # 👈 mejor diccionario por minijuego
-var last_results := []  # 👈 últimos resultados (los que se muestran)
+var rankings := {}
+var last_results := []
+var player_characters := {}  # 👈 ej: { 1: "sonic", 2: "tails", 3: "knuckles", 4: "jet" }
 
 func save_results(minigame_name, results):
 	rankings[minigame_name] = results

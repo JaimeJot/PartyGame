@@ -127,36 +127,27 @@ func try_open(key: int, door: int):
 
 func next_turn():
 	if rankings.size() == DOOR_COUNT:
-		# Añadir el último jugador que falta
+		# Añadir jugadores que no abrieron ninguna puerta, en orden de turno
 		for p in turn_order:
 			if not rankings.has(p):
 				rankings.append(p)
 
-		# 🔥 CONVERTIR A FORMATO CORRECTO
+		# Limitar a exactamente PLAYER_COUNT resultados por si acaso
 		var ordered_results = []
-		var pos = 1
-		
-		for p in rankings:
+		for i in min(rankings.size(), PLAYER_COUNT):
 			ordered_results.append({
-				"player": "Player" + str(p + 1),
-				"position": pos
+				"player": "Player" + str(rankings[i] + 1),
+				"position": i + 1
 			})
-			pos += 1
 
-		# 💾 GUARDAR BIEN
-		GameState.rankings["doors"] = ordered_results
-		GameState.last_results = ordered_results
-
-		# 👉 IR A RESULTADOS
+		GameState.save_results("doors", ordered_results)
 		get_tree().change_scene_to_file("res://results/ResultsScreen.tscn")
 		queue_free()
 		return
 
-	# 👉 SIGUIENTE TURNO NORMAL
 	current_turn = (current_turn + 1) % turn_order.size()
 	selection_mode = SelectionMode.KEY
 	selection_index = first_valid(key_used)
-
 	update_ui()
 	update_visual()
 
